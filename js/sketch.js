@@ -6,6 +6,8 @@ var NYweather;
 let happy;
 let sad;
 let sunset;
+let rain;
+let night;
 let drops = [];
 
 function preload() {
@@ -13,7 +15,8 @@ function preload() {
   happy = loadImage("./charmander.png");
   sad = loadImage("./charmander-sad.png");
   sunset = loadImage("./sunset.jpg");
-  rain = loadImage("./night.jpg");
+  rain = loadImage("./rain.gif");
+  night = loadImage("./night.jpg");
 }
 
 function setup() {
@@ -36,24 +39,25 @@ function setup() {
 
 function gotData(data) {
   NYweather = data;
+  console.log(NYweather);
 }
 
 function draw() {
   background("black");
   if (NYweather) {
-    // var humidity = NYweather.main.humidity;
+    var humidity = NYweather.main.humidity;
     var description = NYweather.weather[0].main.toUpperCase();
     var temp = Math.ceil(NYweather.main.temp);
 
     // ======== FOR TESTING HUMIDITY STATEMENTS ========
     // var humidity = 60;
-    var humidity = 40;
+    // var humidity = 40;
     // var humidity = 50;
     fill(255);
     noStroke();
     text("(" + temp + " CELSIUS)", windowWidth / 3, windowHeight / 1.5);
 
-    // If humidity is LOW, enable stars
+    // If humidity is LOW, enable stars and happy Charmander
     if (humidity < 50) {
       image(sunset, 0, 0, windowWidth, windowHeight);
       fill(0, 0, random(200));
@@ -71,10 +75,10 @@ function draw() {
       star(0, 0, random(15), 3, 5);
       pop();
 
-      // If humidity is HIGH, enable rain
+      // If humidity is HIGH, enable rain and sad Charmander
     } else if (humidity > 50) {
-      image(rain, 0, 0, windowWidth, windowHeight);
-      fill(255, random(200), 255);
+      image(night, 0, 0, windowWidth, windowHeight);
+      fill(255, random(100), 10);
       noStroke();
       text("THIS IS TOO HUMID FOR ME! :(", windowWidth / 2, windowHeight / 3);
       text(
@@ -89,9 +93,15 @@ function draw() {
       }
       // If humidity is 50%
     } else if ((humidity = 50)) {
-      fill(random(93), 30, 255);
+      image(rain, 0, 0, windowWidth, windowHeight);
+      fill(random(255), 255, 50);
       text(
-        "PERHAPS I COULD SURVIVE THIS...",
+        "IT'S " + humidity + "% " + "HUMIDITY WITH " + description + " OUTSIDE",
+        windowWidth / 2,
+        windowHeight / 4
+      );
+      text(
+        "PERHAPS I COULD SURVIVE THIS...? ",
         windowWidth / 2,
         windowHeight / 3
       );
