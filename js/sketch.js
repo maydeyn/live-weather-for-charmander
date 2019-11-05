@@ -22,7 +22,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   loadJSON(
-    "http://api.openweathermap.org/data/2.5/weather?id=" +
+    "https://api.openweathermap.org/data/2.5/weather?id=" +
       newyork +
       "&units=metric&APPID=" +
       API_KEY,
