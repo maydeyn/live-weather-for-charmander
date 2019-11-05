@@ -5,12 +5,15 @@ var NYweather;
 // images
 let happy;
 let sad;
+let sunset;
 let drops = [];
 
 function preload() {
   font = loadFont("./LLPIXEL3.ttf");
   happy = loadImage("./charmander.png");
   sad = loadImage("./charmander-sad.png");
+  sunset = loadImage("./sunset.jpg");
+  rain = loadImage("./night.jpg");
 }
 
 function setup() {
@@ -23,8 +26,9 @@ function setup() {
     gotData
   );
   textFont(font);
-  textSize(46);
+  textSize(48);
   textAlign(CENTER, CENTER);
+  // Rain drop
   for (var i = 0; i < 500; i++) {
     drops[i] = new Drop();
   }
@@ -41,10 +45,10 @@ function draw() {
     var description = NYweather.weather[0].main.toUpperCase();
     var temp = Math.ceil(NYweather.main.temp);
 
-    //testing if my humidity > 50 statement works
+    // ======== FOR TESTING HUMIDITY STATEMENTS ========
     var humidity = 60;
-    //testing if my humidity < 50 statement works
     // var humidity = 40;
+    // var humidity = 50;
     fill(255);
     noStroke();
     text("(" + temp + " CELSIUS)", windowWidth / 3, windowHeight / 1.5);
@@ -53,24 +57,39 @@ function draw() {
       windowWidth / 2,
       windowHeight / 4
     );
+
+    // If humidity is LOW, enable stars
     if (humidity < 50) {
+      text(tempReport);
+      text(humidityReport);
+      image(sunset, 0, 0, windowWidth, windowHeight);
       fill(35, 235, random(255));
       text("WHAT A NICE DAY, LET'S GO OUT!", windowWidth / 2, windowHeight / 3);
       image(happy, windowWidth / 2, windowHeight / 2, 200, 200);
+
       push();
       translate(random(width), random(height));
       rotate(frameCount / -100.0);
       star(0, 0, random(15), 3, 5);
       pop();
+
+      // If humidity is HIGH, enable rain
     } else if (humidity > 50) {
-      fill(23, random(80), 285);
+      image(rain, 0, 0, windowWidth, windowHeight);
+      fill(255, random(200), 255);
       noStroke();
       text("THIS IS TOO HUMID FOR ME! :(", windowWidth / 2, windowHeight / 3);
+      text(
+        "IT'S " + humidity + "% " + "HUMIDITY WITH " + description + " OUTSIDE",
+        windowWidth / 2,
+        windowHeight / 4
+      );
       image(sad, windowWidth / 2, windowHeight / 2, 200, 200);
       for (var i = 0; i < drops.length; i++) {
         drops[i].fall();
         drops[i].show();
       }
+      // If humidity is 50%
     } else if ((humidity = 50)) {
       fill(random(93), 30, 255);
       text(
@@ -116,7 +135,7 @@ function Drop() {
 }
 
 // Stars
-// modified from p5.js example
+// modified from p5.js website's Star example
 function star(x, y, radius1, radius2, npoints) {
   let angle = TWO_PI / npoints;
   let halfAngle = angle / 2.0;
