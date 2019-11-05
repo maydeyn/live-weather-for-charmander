@@ -46,25 +46,23 @@ function draw() {
     var temp = Math.ceil(NYweather.main.temp);
 
     // ======== FOR TESTING HUMIDITY STATEMENTS ========
-    var humidity = 60;
-    // var humidity = 40;
+    // var humidity = 60;
+    var humidity = 40;
     // var humidity = 50;
     fill(255);
     noStroke();
     text("(" + temp + " CELSIUS)", windowWidth / 3, windowHeight / 1.5);
-    text(
-      "IT'S " + humidity + "% " + "HUMIDITY WITH " + description + " OUTSIDE",
-      windowWidth / 2,
-      windowHeight / 4
-    );
 
     // If humidity is LOW, enable stars
     if (humidity < 50) {
-      text(tempReport);
-      text(humidityReport);
       image(sunset, 0, 0, windowWidth, windowHeight);
-      fill(35, 235, random(255));
-      text("WHAT A NICE DAY, LET'S GO OUT!", windowWidth / 2, windowHeight / 3);
+      fill(0, 0, random(200));
+      text("LET'S GO OUT!", windowWidth / 2, windowHeight / 3);
+      text(
+        "IT'S " + humidity + "% " + "HUMIDITY WITH " + description + " OUTSIDE",
+        windowWidth / 2,
+        windowHeight / 4
+      );
       image(happy, windowWidth / 2, windowHeight / 2, 200, 200);
 
       push();
