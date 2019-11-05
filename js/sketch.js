@@ -9,8 +9,8 @@ let drops = [];
 
 function preload() {
   font = loadFont("./LLPIXEL3.ttf");
-  happy = loadImage("/charmander.png");
-  sad = loadImage("/charmander-sad.png");
+  happy = loadImage("./charmander.png");
+  sad = loadImage("./charmander-sad.png");
 }
 
 function setup() {
@@ -42,9 +42,9 @@ function draw() {
     var temp = Math.ceil(NYweather.main.temp);
 
     //testing if my humidity > 50 statement works
-    // var humidity = 60;
+    var humidity = 60;
     //testing if my humidity < 50 statement works
-    var humidity = 40;
+    // var humidity = 40;
     fill(255);
     noStroke();
     text("(" + temp + " CELSIUS)", windowWidth / 3, windowHeight / 1.5);
@@ -54,7 +54,6 @@ function draw() {
       windowHeight / 4
     );
     if (humidity < 50) {
-      // background("orange");
       fill(35, 235, random(255));
       text("WHAT A NICE DAY, LET'S GO OUT!", windowWidth / 2, windowHeight / 3);
       image(happy, windowWidth / 2, windowHeight / 2, 200, 200);
@@ -63,21 +62,24 @@ function draw() {
       rotate(frameCount / -100.0);
       star(0, 0, random(15), 3, 5);
       pop();
+    } else if (humidity > 50) {
+      fill(23, random(80), 285);
+      noStroke();
+      text("THIS IS TOO HUMID FOR ME! :(", windowWidth / 2, windowHeight / 3);
+      image(sad, windowWidth / 2, windowHeight / 2, 200, 200);
+      for (var i = 0; i < drops.length; i++) {
+        drops[i].fall();
+        drops[i].show();
+      }
+    } else if ((humidity = 50)) {
+      fill(random(93), 30, 255);
+      text(
+        "PERHAPS I COULD SURVIVE THIS...",
+        windowWidth / 2,
+        windowHeight / 3
+      );
+      image(happy, windowWidth / 2, windowHeight / 2, 200, 200);
     }
-  } else if (humidity > 50) {
-    fill(23, random(80), 285);
-    noStroke();
-    text("THIS IS TOO HUMID FOR ME! :(", windowWidth / 2, windowHeight / 3);
-    image(sad, windowWidth / 2, windowHeight / 2, 200, 200);
-    // background(230, 230, 250);
-    for (var i = 0; i < drops.length; i++) {
-      drops[i].fall();
-      drops[i].show();
-    }
-  } else if ((humidity = 50)) {
-    fill(random(93), 30, 255);
-    text("PERHAPS I COULD SURVIVE THIS...", windowWidth / 2, windowHeight / 3);
-    image(happy, windowWidth / 2, windowHeight / 2, 200, 200);
   }
 }
 
