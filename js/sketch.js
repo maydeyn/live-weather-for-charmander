@@ -63,7 +63,7 @@ function draw() {
       fill(0, 0, random(200));
       text("LET'S GO OUT!", windowWidth / 2, windowHeight / 3);
       text(
-        "IT'S " + humidity + "% " + "HUMIDITY WITH " + description + " OUTSIDE",
+        "IT'S " + humidity + "% " + "HUMIDITY AND " + description + " OUTSIDE",
         windowWidth / 2,
         windowHeight / 4
       );
