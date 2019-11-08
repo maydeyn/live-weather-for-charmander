@@ -57,7 +57,7 @@ function draw() {
     // If humidity is LOW, enable stars and happy Charmander
     if (humidity < 50) {
       image(sunset, 0, 0, windowWidth, windowHeight);
-      fill(0, 0, random(200));
+      fill(255, 255, random(255));
       noStroke();
       text("(" + temp + " CELSIUS)", windowWidth / 3, windowHeight / 1.5);
       text("LET'S GO OUT!", windowWidth / 2, windowHeight / 3);
