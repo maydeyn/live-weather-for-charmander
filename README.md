@@ -1,4 +1,4 @@
-## Live Weather Updates for Charmander's Adventure in New York
+## Live Weather Updates for Charmander's Adventure in New York City
 
 
 #### Weather Reporting Interface will tell Charmander whether it’s safe to go out or not based on the current humidity level and weather condition in New York.
