@@ -115,7 +115,7 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-// Based on Purple Rain tutorial by Daniel Shiffman
+// Based on Purple Rain tutorial by Daniel Shiffman (The Coding Train)
 // https://github.com/CodingTrain/website/tree/master/CodingChallenges/CC_004_PurpleRain/P5
 function Drop() {
   this.x = random(width);
