@@ -9,3 +9,6 @@
 #### [OpenWeather API](https://openweathermap.org/)
 #### [Purple Rain by The Coding Train](https://thecodingtrain.com/CodingChallenges/004-purplerain.html)
 #### [LL Pixel Font by Markus Schröppel](https://www.dafont.com/llpixel.font)
+
+
+![Preview Image](https://octodex.github.com/images/yaktocat.png)
