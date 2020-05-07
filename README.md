@@ -11,4 +11,4 @@
 #### [LL Pixel Font by Markus Schröppel](https://www.dafont.com/llpixel.font)
 
 
-![Preview Image](https://octodex.github.com/images/yaktocat.png)
+![Preview Image](https://github.com/maydeyn/live-weather-for-charmander/blob/master/charmander_weather.png)
